@@ -1,0 +1,115 @@
+<style>
+  /* Полупрозрачный и размытый фон */
+  .cyberpunk-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный чёрный слой */
+    backdrop-filter: blur(10px); /* Размытие фона */
+    z-index: 0; /* Поместить под текст */
+  }
+
+  /* Текст с киберпанковским стилем */
+  .cyberpunk-section h1, .cyberpunk-section h2 {
+    position: relative; /* Поверх слоя */
+    z-index: 2;
+    color: red; /* Красный цвет текста */
+    font-family: 'Press Start 2P', cursive; /* Киберпанковский шрифт */
+    text-shadow: 0 0 10px red, 0 0 20px pink, 0 0 30px purple; /* Свечение текста */
+  }
+
+  /* Анимация киберпанковских символов */
+  .cyber-symbols {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Поверх фона, но под текстом */
+    color: rgba(0, 255, 0, 0.2); /* Зелёный цвет с прозрачностью */
+    font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт */
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  /* Создаём "дождь" символов */
+  .cyber-symbols::after {
+    content: '0011010#$@!%^&*0010110∆∞∑π©0123456789';
+    animation: cyber-rain 3s infinite linear; /* Анимация, повторяющаяся бесконечно */
+    white-space: pre-line;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    width: 100%;
+    line-height: 2em; /* Расстояние между строками */
+    font-size: 20px; /* Размер символов */
+  }
+
+  /* Анимация киберпанковских символов */
+  @keyframes cyber-rain {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+</style>
+
+<style>
+  /* ===== ПАДАЮЩИЕ СТРОКИ ===== */
+  .cyber-symbols .line {
+    position: absolute;
+    top: -100%; /* Начало анимации за экраном */
+    color: rgba(0, 255, 0, 0.8); /* Зелёный цвет символов */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px; /* Размер символов */
+    line-height: 1.5em; /* Расстояние между строками */
+    animation: rain 5s infinite linear; /* Анимация падения */
+    white-space: nowrap; /* Не переносить строку */
+  }
+
+  /* Анимация */
+  @keyframes rain {
+    0% {
+      transform: translateY(-100%); /* Начало анимации */
+    }
+    100% {
+      transform: translateY(100%); /* Конец анимации */
+    }
+  }
+</style>
+
+
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <!-- Слайд 1: Заглавный слайд с фоном -->
+<section 
+  class="cyberpunk-section"
+  data-background-image="file:///C:/Users/ivani/OneDrive/Рабочий%20стол/reveal.js-master/images/nii.jpg"
+  data-background-size="cover"
+  data-background-position="center"
+  data-background-parallax="100">
+  
+  <!-- Заголовок и подзаголовок -->
+  <h1 class="fragment zoom-in cyberpunk-text">Биг дата в эмирате Дубаи</h1>
+  <h2 class="fragment slide-in-left cyberpunk-text">Мифы и реальность</h2>
+  
+  <!-- Слой с анимированными символами -->
+  <div class="cyber-symbols">
+    <!-- Первая строка -->
+    <div class="line" style="left: 10%; animation-delay: 0s;">001011010101</div>
+    <!-- Вторая строка -->
+    <div class="line" style="left: 30%; animation-delay: 1s;">101101001010</div>
+    <!-- Третья строка -->
+    <div class="line" style="left: 50%; animation-delay: 2s;">110100110101</div>
+    <!-- Четвёртая строка -->
+    <div class="line" style="left: 70%; animation-delay: 3s;">011001011011</div>
+  </div>
+</section>
